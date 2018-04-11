@@ -59,7 +59,8 @@ void Track_bar_test() {
 
 	//tft.fillRect(GHT - (MARKER_WIDTH/2), posY, MARKER_WIDTH, size_YY, RA8875_RED);
 	tft.fillRect(posX, posY, TRACKBARVAL, size_YY, RA8875_RED);
-
+	int BVC = map(TRACKBARVAL, 0,TRB_SIZE_X, 10, 255);
+	tft.brightness(BVC);
 	SUB_SCREEN_UPDATE = true;
 
 }

@@ -39,9 +39,12 @@ void GET_TOUCH_XY_VALUE () {
       break;
 
     case 3:    // your hand is nowhere near the sensor
+
+
       Serial.println("RGB 1 CONFIGURATION MENU BUTTON pressed");
       BUTTON_TOUCH_RGB_MENU(new_coordinates[0][0], new_coordinates[0][1]);
 	  RGB_BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
+	  TRACK_BAR_POSITION(new_coordinates[0][0], new_coordinates[0][1]);
       break;
     case 4:    // your hand is close to the sensor
 		Serial.println("RGB 2 CONFIGURATION MENU BUTTON pressed");
@@ -68,9 +71,11 @@ void GET_TOUCH_XY_VALUE () {
 
   if (SUB_SCREEN_UPDATE == true) {
 
-	  
-	  TRACK_BAR_POSITION(new_coordinates[0][0], new_coordinates[0][1]);
+
+	//  TRACK_BAR_POSITION(new_coordinates[0][0], new_coordinates[0][1]);
+	  return;
   }
+
 }
 
 
@@ -78,7 +83,7 @@ void TRACK_BAR_POSITION(int Xtemp, int Ytemp) {
 
 	if ((Xtemp > TRB_X && Xtemp < TRB_X + TRB_SIZE_X) && (Ytemp > TRB_Y && Ytemp < TRB_Y + TRB_SIZE_Y)) {
 
-		int BVC = map(Xtemp, TRB_X, (TRB_X+TRB_SIZE_X), 0,255);
+		int BVC = map(Xtemp, TRB_X, (TRB_X+TRB_SIZE_X), 0,TRB_SIZE_X);
 		TRACKBARVAL = BVC;
 		delay(10);
 		Track_bar_test();
