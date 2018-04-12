@@ -550,9 +550,9 @@ void loop(void) {
   if (cts.touched()) { //if touched(true) detach isr
     digitalWrite(LED2, HIGH);   // turn the LED on (HIGH is the voltage level)
     GET_TOUCH_XY_VALUE ();
-    delay(200);
+    delay(150);
     RESET_Temp_touch_values ();
-    delay(100);
+   // delay(100);
     //cts.touched(false);
   }
 

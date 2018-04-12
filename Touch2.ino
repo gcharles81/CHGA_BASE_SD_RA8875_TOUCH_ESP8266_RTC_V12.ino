@@ -20,7 +20,7 @@ void GET_TOUCH_XY_VALUE () {
   Serial.print("Y coordinate - ");
   Serial.println(y);
   //  delay(100);
-
+ 
 
   tft.setCursor(0, 0); //set cursor work in pixel!!!
   switch (MENU) {
@@ -68,7 +68,7 @@ void GET_TOUCH_XY_VALUE () {
       break;
 
   }
-
+ 
   if (SUB_SCREEN_UPDATE == true) {
 
 
@@ -78,10 +78,24 @@ void GET_TOUCH_XY_VALUE () {
 
 }
 
+bool Touch_inRange(int X_val, int Y_val, int Button_name[4])
+
+{
+
+	int X_min = Button_name[0];
+	int Y_min = Button_name[1];
+	int X_max = (Button_name[0] + B_INFO[Button_name[2]].img_width);
+	int Y_max = (Button_name[1] + B_INFO[Button_name[2]].img_height);
+
+
+//	return ((X_min <= X_val) && (X_val <= X_max) && (Y_val <= Y_max) && (Y_val <= Y_max));
+	return ((X_val > X_min) && (X_val < X_max) && (Y_val > Y_min) && (Y_val < Y_max));
+
+}
 
 void TRACK_BAR_POSITION(int Xtemp, int Ytemp) {
 
-	if ((Xtemp > TRB_X && Xtemp < TRB_X + TRB_SIZE_X) && (Ytemp > TRB_Y && Ytemp < TRB_Y + TRB_SIZE_Y)) {
+	if ((Xtemp >= TRB_X && Xtemp <= TRB_X + TRB_SIZE_X) && (Ytemp > TRB_Y && Ytemp < TRB_Y + TRB_SIZE_Y)) {
 
 		int BVC = map(Xtemp, TRB_X, (TRB_X+TRB_SIZE_X), 0,TRB_SIZE_X);
 		TRACKBARVAL = BVC;
@@ -633,6 +647,241 @@ void CHGA_BCD() {
   //tft.setFont(INTFONT);
 
 
+
+
+}
+////////////////////////////////////////////
+void BUTTON_TOUCH_RGB_MENU(int Xval, int Yval) {
+
+	//////////////////////////////////////////////////
+	/// MENU TYPE ICON  M7B_A
+	if (Touch_inRange(Xval, Yval, M7B_A))
+	{
+		Serial.println("MENU TYPE ICON  M7B_A");
+		return;
+	}
+
+	else { // do nothing *
+	}
+	//// HOME ICON M7B_B
+	if (Touch_inRange(Xval, Yval, M7B_B))
+	{
+		Update_btn_press(M7B_B);
+		delay(1);
+		Serial.println("HOME ICON ICON  M7B_B");
+		return;
+	}
+	else { // do nothing *
+	}
+	///   NEXT PAGE
+	if ((Touch_inRange(Xval, Yval, M7B_C)) && (MENU == 3 || MENU == 4 || MENU == 5))
+	{
+		Update_btn_press(M7B_C);
+		delay(1);
+		MENU++;
+		SCREEN_UPDATE = true;
+		Serial.println("NEXT PAGE  ICON  M7B_C");
+		return;
+	}
+	else { // do nothing *
+	}
+	/// PREV PAGE
+	if (Touch_inRange(Xval, Yval, M7B_D))
+	{
+		Update_btn_press(M7B_D);
+		delay(1);
+		Serial.println("PREV PAGE  ICON  M7B_D");
+
+		MENU--;
+		SCREEN_UPDATE = true;
+		return;
+
+
+	}
+	else { // do nothing *
+	}
+	/// TEST - COLOR
+	if (Touch_inRange(Xval, Yval, M7B_E))
+	{
+		Update_btn_press(M7B_E);
+		delay(1);
+		Serial.println("TEST - COLOR  ICON  M7B_E");
+		return;
+	}
+	else { // do nothing *
+	}
+	/// SAVE SETTINGS to EEPROM / SD
+	if (Touch_inRange(Xval, Yval, M7B_F))
+	{
+		Update_btn_press(M7B_F);
+		delay(1);
+
+		if (MENU == 3) {
+			RED1 = Temp_red_1; ///Read stored light Value
+			GREEN1 = Temp_green_1;  ///Read stored light Value
+			BLUE1 = Temp_blue_1; ///Read stored light Value
+		}
+		if (MENU == 4) {
+			RED2 = Temp_red_1; ///Read stored light Value
+			GREEN2 = Temp_green_1;  ///Read stored light Value
+			BLUE2 = Temp_blue_1; ///Read stored light Value
+		}
+		if (MENU == 3) {
+			RED3 = Temp_red_1; ///Read stored light Value
+			GREEN3 = Temp_green_1;  ///Read stored light Value
+			BLUE3 = Temp_blue_1; ///Read stored light Value
+		}
+		if (MENU == 3) {
+			RED4 = Temp_red_1; ///Read stored light Value
+			GREEN4 = Temp_green_1;  ///Read stored light Value
+			BLUE4 = Temp_blue_1; ///Read stored light Value
+		}
+
+
+		//to store EEprom later 
+
+		Serial.println("SAVE SETTINGS to EEPROM / SD  ICON  M7B_F");
+		return;
+	}
+
+	else { // do nothing *
+	}
+	/// RED +
+	if (Touch_inRange(Xval, Yval, M7B_G))
+	{
+		Update_btn_press(M7B_G);
+		delay(1);
+
+		if (Temp_red_1 < 255) {
+			Temp_red_1++;
+		}
+
+		Serial.println("RED +  ICON  M7B_G");
+		Serial.print("RED + ");
+		Serial.println(Temp_red_1);
+		delay(20);
+		update_label_val(label_1, Temp_red_1);
+		return;
+	}
+
+	else { // do nothing *
+	}
+	/// RED -
+	if (Touch_inRange(Xval, Yval, M7B_H))
+	{
+		Update_btn_press(M7B_H);
+		delay(1);
+		if (Temp_red_1 > 0) {
+			Temp_red_1--;
+
+			//Update_btn_press(M7B_H);
+
+		}
+
+		Serial.println("RED -  ICON  M7B_H");
+		Serial.print("RED - ");
+		Serial.println(Temp_red_1);
+		//delay(200);
+		update_label_val(label_1, Temp_red_1);
+
+		return;
+	}
+
+	else { // do nothing *
+	}
+
+	/// GREEN +
+	if (Touch_inRange(Xval, Yval, M7B_I))
+	{
+		Update_btn_press(M7B_I);
+		delay(1);
+		if (Temp_green_1 < 255) {
+			Temp_green_1++;
+		}
+
+		Serial.println("GREEN +  ICON  M7B_I");
+		Serial.print("GREEN + ");
+		Serial.println(Temp_green_1);
+		delay(20);
+		Serial.println("GREEN +  ICON  M7B_I");
+		update_label_val(label_2, Temp_green_1);
+		return;
+	}
+
+
+	else { // do nothing *
+	}
+
+	/// GREEN -
+
+	if (Touch_inRange(Xval, Yval, M7B_J))
+	{
+		Update_btn_press(M7B_J);
+		delay(1);
+
+
+		Serial.println("GREEN -  ICON  M7B_J");
+		return;
+	}
+
+	else { // do nothing *
+	}
+	/// BLUE +
+	if (Touch_inRange(Xval, Yval, M7B_K))
+	{
+		Update_btn_press(M7B_K);
+		//delay(1);
+		if (Temp_blue_1 < 255) {
+			Temp_blue_1++;
+		}
+
+		Serial.println("BLUE +  ICON  M7B_K");
+		Serial.print("BLUE + ");
+		Serial.println(Temp_blue_1);
+		//	delay(20);
+		Serial.println("GREEN +  ICON  M7B_K");
+		update_label_val(label_3, Temp_blue_1);
+		return;
+	}
+	else { // do nothing *
+	}
+
+	/// BLUE -
+
+
+	if (Touch_inRange(Xval, Yval, M7B_L))
+	{
+
+
+		Update_btn_press(M7B_L);
+		///delay(1);
+
+		Serial.println("BLUE -  ICON  M7B_L");
+		return;
+	}
+
+	else { // do nothing *
+	}
+
+	///////////////
+
+	SCREEN_UPDATE = false;
+}
+
+
+void RGB_BUTTON_HOME(int Xtemp, int Ytemp) {
+
+	if (Touch_inRange(Xtemp, Ytemp, M7B_B))
+	{
+		Serial.println("MENU SET TO 0 MEANING HOME SCREEN");
+		MENU = 0;            // MENU SET TO 0 MEANING HOME SCREEN;
+		SCREEN_UPDATE = true; // UPDATE SCREEN SINCE HOME BUTTON WAS PRESSED;
+		SUB_SCREEN_UPDATE = false;
+
+		return;
+	}
+	else { // do nothing *
+	}
 
 
 }

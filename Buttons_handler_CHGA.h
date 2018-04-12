@@ -4,19 +4,7 @@
 //-Button_handler 
 int Button_hold_delay = 50;
 
-bool Touch_inRange(int X_val,int Y_val,int Button_name[4])
-  
-  {
 
-int X_min = Button_name[0];
-int Y_min = Button_name[1];
-int X_max = (Button_name[0] + B_INFO[Button_name[2]].img_width);
-int Y_max = (Button_name[1] + B_INFO[Button_name[2]].img_height);
-
-
-  return ((X_min <= X_val) && (X_val <= X_max)&& (Y_val <= Y_max)&& (Y_val <= Y_max));
-
-  }
 
 
 void create_btn(int tff[4]){
