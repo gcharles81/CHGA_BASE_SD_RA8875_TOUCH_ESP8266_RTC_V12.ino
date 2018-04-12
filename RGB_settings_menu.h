@@ -174,9 +174,10 @@ void TFT_MENU_RGB_01(boolean reset_screen, int STATUS, int menu_nr) {
 	}
 
 	/// PREV PAGE 
-	//if (menu_nr == 4 || menu_nr == 5 || menu_nr == 6) {
-		create_btn(M7B_D);
-	//}
+	if (menu_nr == 4 || menu_nr == 5 || menu_nr == 6) {	create_btn(M7B_D);}
+	
+	
+	
 	/// TEST - COLOR 
 
 	create_btn(M7B_E);

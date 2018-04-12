@@ -819,8 +819,12 @@ void BUTTON_TOUCH_RGB_MENU(int Xval, int Yval) {
 		Update_btn_press(M7B_J);
 		delay(1);
 
+		if (Temp_green_1 >=1) {
+			Temp_green_1--;
+		}
 
 		Serial.println("GREEN -  ICON  M7B_J");
+		update_label_val(label_2, Temp_green_1);
 		return;
 	}
 
@@ -854,8 +858,13 @@ void BUTTON_TOUCH_RGB_MENU(int Xval, int Yval) {
 
 
 		Update_btn_press(M7B_L);
-		///delay(1);
 
+		if (Temp_blue_1 >= 1) {
+			Temp_blue_1--;
+		}
+
+		///delay(1);
+		update_label_val(label_3, Temp_blue_1);
 		Serial.println("BLUE -  ICON  M7B_L");
 		return;
 	}
