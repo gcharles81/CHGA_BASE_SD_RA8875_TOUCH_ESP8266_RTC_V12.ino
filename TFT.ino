@@ -385,62 +385,37 @@ void TFT_MENU_ABOUT () {
   tft.setCursor((tft.width ()/ 2), 30 ,true);
   tft.print("ABOUT");
   delay(80);
-  
-  //SPIFLASH-BMP-ICON ABOUT////////////////////////////////
-  Serial.println("let me show you settings icon from flash ");
-  tft.dispicown(0, 0, 66, 66, 5241584); //Dispp463.bmp 66  66  16bpp mode (RGB 5:6:5)  8712  5241584
 
-   delay(200);
-  tft.setActiveWindow();
-     delay(200);
- //tft.setActiveWindow();
-// tft.dispicown(130, 70,218, 338,11715994);// p61111.bmp  218 338 16bpp mode (RGB 5:6:5)  147368  11715994  //p461.bmp  34  34  16bpp mode (RGB 5:6:5)  2312  5234272
-///lets test something here
-
-LOOPING_ALL_PICS_IN_FLASH();
-
-/*
-for (int t = 1; t <25; t++){
-  delay(200);
-tft.dispicown(130, 70,70,70,4559728);/////NO_CROP_CLRDEPT_24bit27.bmp 70  70  16bpp mode (RGB 5:6:5)  9800  4559728
-GGDELAY();
-tft.dispicown(240, 70,70,70,2794672);/////NO_CROP_CLRDEPT_24bit3.bmp  70  70  16bpp mode (RGB 5:6:5)  9800  2794672
-GGDELAY();
-tft.dispicown(350,100,262,262,9800);/////NO_CROP__NA_CLRDEPT_24bit2.bmp  262 262 16bpp mode (RGB 5:6:5)  137288  9800
-GGDELAY();
-//////////
-delay(200);
-tft.dispicown(130, 70,70,70,5000992);////NO_CROP_CLRDEPT_24bit33.bmp 70  70  16bpp mode (RGB 5:6:5)  9800  5000992
-GGDELAY();
-tft.dispicown(240, 70,70,70,3235936);/////NO_CROP_CLRDEPT_24bit9.bmp  70  70  16bpp mode (RGB 5:6:5)  9800  3235936
-GGDELAY();
-tft.dispicown(350,100,262,262,451064);/////NO_CROP__NA_CLRDEPT_24bit8.bmp 262 262 16bpp mode (RGB 5:6:5)  137288  451064
-
-GGDELAY();
-
-}
-*/
-/*
-tft.dispicown(100,100,262,262,9800);/////NO_CROP__NA_CLRDEPT_24bit2.bmp  262 262 16bpp mode (RGB 5:6:5)  137288  9800
-GGDELAY();
-tft.setActiveWindow();
-GGDELAY();
-
-tft.dispicown(100,100,262,262,451064);/////NO_CROP__NA_CLRDEPT_24bit8.bmp 262 262 16bpp mode (RGB 5:6:5)  137288  451064
-  */
-  delay(80);
-  //********************
-
-  //SPIFLASH-BMP-ICON HOME Button////////////////////////////////
-  Serial.println("let me show you home button from flash ");
-  tft.dispicown(1, 414, 66, 66, 3502368); //Dispay pic325
- // delay(45);
-  delay(100);
-  tft.setActiveWindow();
-  
+  Update_KPDVAL(350, 120);
+  create_btn(KPD_A);
+  DELAY_00D();
+  create_btn(KPD_B);
+  DELAY_00D();
+  create_btn(KPD_C);
+  DELAY_00D();
+  create_btn(KPD_D);
+  DELAY_00D();
+  create_btn(KPD_E);
+  DELAY_00D();
+  create_btn(KPD_F);
+  DELAY_00D();
+  create_btn(KPD_G);
+  DELAY_00D();
+  create_btn(KPD_H);
+  DELAY_00D();
+  create_btn(KPD_I);
+  DELAY_00D();
+  create_btn(KPD_J);
+  DELAY_00D();
+  create_btn(KPD_K);
+  DELAY_00D();
   SCREEN_UPDATE = false;
    
 
+}
+
+void DELAY_00D() {
+	delay(1);
 }
 
 void DELAY_001 (){

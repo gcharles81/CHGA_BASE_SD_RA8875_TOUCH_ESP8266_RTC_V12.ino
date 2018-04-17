@@ -1,5 +1,6 @@
 
 // include the SD library:
+#include "keypad.h"
 #include <SPI.h>
 #include <SD.h>
 
@@ -257,7 +258,7 @@ boolean MANUAL_CH4_Override = false;
 #include "All_75_Pic_65K.h"
 #include "Buttons_handler_CHGA.h"
 #include "RGB_settings_menu.h"
-
+#include "CHGA_Keypad.h"
 
 
 ////////////ESP8266//////CHGA

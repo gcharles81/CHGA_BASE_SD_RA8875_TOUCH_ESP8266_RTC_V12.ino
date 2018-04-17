@@ -62,8 +62,8 @@ void GET_TOUCH_XY_VALUE () {
 		RGB_BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
       break;
     case 7:    // your hand is close to the sensor
-
-      Serial.println("HOME BUTTON pressed");
+		BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1]);
+     // Serial.println("HOME BUTTON pressed");
       BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
       break;
 
