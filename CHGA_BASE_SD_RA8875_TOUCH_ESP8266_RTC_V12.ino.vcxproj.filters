@@ -39,9 +39,6 @@
     <ClInclude Include="RGB_settings_menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="keypad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CHGA_Keypad.h">
       <Filter>Header Files</Filter>
     </ClInclude>

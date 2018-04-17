@@ -386,6 +386,9 @@ void TFT_MENU_ABOUT () {
   tft.print("ABOUT");
   delay(80);
 
+  create_label(label_KEYPAD);//Create label to show keypad value
+
+
   Update_KPDVAL(350, 120);
   create_btn(KPD_A);
   DELAY_00D();
@@ -408,6 +411,8 @@ void TFT_MENU_ABOUT () {
   create_btn(KPD_J);
   DELAY_00D();
   create_btn(KPD_K);
+  DELAY_00D();
+  create_btn(KPD_L);
   DELAY_00D();
   SCREEN_UPDATE = false;
    

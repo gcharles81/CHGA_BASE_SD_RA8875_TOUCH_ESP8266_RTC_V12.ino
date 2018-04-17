@@ -5,9 +5,9 @@ int KPD_Y_VAL = 0;
 
 int X_M = 61;
 int Y_M = 61;
+String VALUE_Combined = "";
 
-
-
+int16_t label_KEYPAD[4] = { 172, 233,113,40 };
 
 
 int KPD_A[4] = { KPD_X_VAl,KPD_Y_VAL,143,154 };//[0] = location X , [1] = location Y ,[143] = pic number ,[154] = pic number "pressed": //1
@@ -29,9 +29,38 @@ int KPD_H[4] = { KPD_X_VAl,KPD_Y_VAL,138,149};//[0] = location X , [1] = locatio
 int KPD_I[4] = { KPD_X_VAl,KPD_Y_VAL,142,153};//[0] = location X , [1] = location Y ,[142] = pic number ,[153] = pic number "pressed"://9
 int KPD_J[4] = { KPD_X_VAl,KPD_Y_VAL,141,152};//[0] = location X , [1] = location Y ,[141] = pic number ,[152] = pic number "pressed"://c
 int KPD_K[4] = { KPD_X_VAl,KPD_Y_VAL,117,21 };//[0] = location X , [1] = location Y ,[117] = pic number ,[3] = pic number "pressed":
-int KPD_L[4] = { KPD_X_VAl,KPD_Y_VAL, 11,22 };//[0] = location X , [1] = location Y ,[2] = pic number ,[3] = pic number "pressed":
+int KPD_L[4] = { KPD_X_VAl,KPD_Y_VAL, 148,159 };//[0] = location X , [1] = location Y ,[148] = pic number ,[159] = pic number "pressed":
+
+void update_label_val_String(int16_t TDF[4], int val) {
+	create_label(label_KEYPAD);
+
+	if (val == 99) {
+
+	//	VALUE_Combined.concat(val);
+
+		tft.setFontScale(1);//font x1
+
+		tft.setTextColor(lbl_TXT_color, lbl_back_color);
+
+		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
+
+		tft.print(VALUE_Combined);
+	}
+
+	else {
+		VALUE_Combined.concat(val);
+
+		tft.setFontScale(1);//font x1
+
+		tft.setTextColor(lbl_TXT_color, lbl_back_color);
+
+		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
+
+		tft.print(VALUE_Combined);
+	}
 
 
+}
 
 void Update_KPDVAL(int XXX , int YYY) {
 
@@ -94,15 +123,21 @@ void Update_KPDVAL(int XXX , int YYY) {
 	KPD_K[0] = XXX;
 	KPD_K[1] = YYY;
 
+	XXX = (XXX + X_M);
+	KPD_L[0] = XXX;
+	KPD_L[1] = YYY;
 }
 
 ///
 void BUTTON_KPD_MENU(int Xval, int Yval) {
-
+	
 	//////////////////////////////////////////////////
 	/// Number 1  KPD_A
 	if (Touch_inRange(Xval, Yval, KPD_A))
 	{
+		delay(20);
+		Update_btn_press(KPD_A);
+		update_label_val_String(label_KEYPAD, 1);
 		Serial.println("Number 1");
 		return;
 	}
@@ -113,7 +148,8 @@ void BUTTON_KPD_MENU(int Xval, int Yval) {
 	if (Touch_inRange(Xval, Yval, KPD_B))
 	{
 		Update_btn_press(KPD_B);
-		delay(1);
+		delay(20);
+		update_label_val_String(label_KEYPAD, 2);
 		Serial.println("Number 2");
 		return;
 	}
@@ -123,134 +159,85 @@ void BUTTON_KPD_MENU(int Xval, int Yval) {
 	if (Touch_inRange(Xval, Yval, KPD_C))
 	{
 		Update_btn_press(KPD_C);
-		delay(1);
-		MENU++;
-		SCREEN_UPDATE = true;
+		delay(20);
+		update_label_val_String(label_KEYPAD, 3);
 		Serial.println("Number 3");
 		return;
 	}
 	else { // do nothing *
 	}
-	/// PREV PAGE
+	/// Number 4
 	if (Touch_inRange(Xval, Yval, KPD_D))
 	{
 		Update_btn_press(KPD_D);
-		delay(1);
-		Serial.println("PREV PAGE  ICON  KPD_D");
-
-		MENU--;
-		SCREEN_UPDATE = true;
+		delay(20);
+		update_label_val_String(label_KEYPAD, 4);
+		Serial.println("Number 4");
 		return;
 
 
 	}
 	else { // do nothing *
 	}
-	/// TEST - COLOR
+	/// Number 5
 	if (Touch_inRange(Xval, Yval, KPD_E))
 	{
 		Update_btn_press(KPD_E);
-		delay(1);
-		Serial.println("TEST - COLOR  ICON  KPD_E");
+		delay(20);
+		update_label_val_String(label_KEYPAD, 5);
+
+
+		Serial.println("Number 5");
 		return;
 	}
 	else { // do nothing *
 	}
-	/// SAVE SETTINGS to EEPROM / SD
+	/// Number 6
 	if (Touch_inRange(Xval, Yval, KPD_F))
 	{
 		Update_btn_press(KPD_F);
-		delay(1);
+		delay(20);
+		update_label_val_String(label_KEYPAD, 6);
+		Serial.println("Number 6");
 
-		if (MENU == 3) {
-			RED1 = Temp_red_1; ///Read stored light Value
-			GREEN1 = Temp_green_1;  ///Read stored light Value
-			BLUE1 = Temp_blue_1; ///Read stored light Value
-		}
-		if (MENU == 4) {
-			RED2 = Temp_red_1; ///Read stored light Value
-			GREEN2 = Temp_green_1;  ///Read stored light Value
-			BLUE2 = Temp_blue_1; ///Read stored light Value
-		}
-		if (MENU == 3) {
-			RED3 = Temp_red_1; ///Read stored light Value
-			GREEN3 = Temp_green_1;  ///Read stored light Value
-			BLUE3 = Temp_blue_1; ///Read stored light Value
-		}
-		if (MENU == 3) {
-			RED4 = Temp_red_1; ///Read stored light Value
-			GREEN4 = Temp_green_1;  ///Read stored light Value
-			BLUE4 = Temp_blue_1; ///Read stored light Value
-		}
-
-
-		//to store EEprom later 
-
-		Serial.println("SAVE SETTINGS to EEPROM / SD  ICON  KPD_F");
 		return;
 	}
 
 	else { // do nothing *
 	}
-	/// RED +
+	/// Number 7
 	if (Touch_inRange(Xval, Yval, KPD_G))
 	{
 		Update_btn_press(KPD_G);
-		delay(1);
-
-		if (Temp_red_1 < 255) {
-			Temp_red_1++;
-		}
-
-		Serial.println("RED +  ICON  KPD_G");
-		Serial.print("RED + ");
-		Serial.println(Temp_red_1);
 		delay(20);
-		update_label_val(label_1, Temp_red_1);
+		update_label_val_String(label_KEYPAD, 7);
+		Serial.println("Number 7");
+		
 		return;
 	}
 
 	else { // do nothing *
 	}
-	/// RED -
+	/// Number 8
 	if (Touch_inRange(Xval, Yval, KPD_H))
 	{
 		Update_btn_press(KPD_H);
-		delay(1);
-		if (Temp_red_1 > 0) {
-			Temp_red_1--;
-
-			//Update_btn_press(KPD_H);
-
-		}
-
-		Serial.println("RED -  ICON  KPD_H");
-		Serial.print("RED - ");
-		Serial.println(Temp_red_1);
-		//delay(200);
-		update_label_val(label_1, Temp_red_1);
-
+		delay(20);
+		update_label_val_String(label_KEYPAD, 8);
+		Serial.println("Number 8");
 		return;
 	}
 
 	else { // do nothing *
 	}
 
-	/// GREEN +
+	/// Number 9
 	if (Touch_inRange(Xval, Yval, KPD_I))
 	{
 		Update_btn_press(KPD_I);
-		delay(1);
-		if (Temp_green_1 < 255) {
-			Temp_green_1++;
-		}
-
-		Serial.println("GREEN +  ICON  KPD_I");
-		Serial.print("GREEN + ");
-		Serial.println(Temp_green_1);
 		delay(20);
-		Serial.println("GREEN +  ICON  KPD_I");
-		update_label_val(label_2, Temp_green_1);
+		update_label_val_String(label_KEYPAD, 9);
+		Serial.print("Number 8");
 		return;
 	}
 
@@ -258,63 +245,48 @@ void BUTTON_KPD_MENU(int Xval, int Yval) {
 	else { // do nothing *
 	}
 
-	/// GREEN -
+	/// Cancel
 
 	if (Touch_inRange(Xval, Yval, KPD_J))
 	{
 		Update_btn_press(KPD_J);
-		delay(1);
+		delay(20);
+		Serial.println("Cancel");
+		
+		int length = (VALUE_Combined.length());
 
-		if (Temp_green_1 >= 1) {
-			Temp_green_1--;
-		}
+		VALUE_Combined.remove(length - 1,1); // Remove six characters starting at index=2
+		update_label_val_String(label_KEYPAD, 99);
+		//VALUE_Combined[length - 1] = '\0';
 
-		Serial.println("GREEN -  ICON  KPD_J");
-		update_label_val(label_2, Temp_green_1);
 		return;
 	}
 
 	else { // do nothing *
 	}
-	/// BLUE +
+	/// SAVE Number
 	if (Touch_inRange(Xval, Yval, KPD_K))
 	{
 		Update_btn_press(KPD_K);
-		//delay(1);
-		if (Temp_blue_1 < 255) {
-			Temp_blue_1++;
-		}
-
-		Serial.println("BLUE +  ICON  KPD_K");
-		Serial.print("BLUE + ");
-		Serial.println(Temp_blue_1);
-		//	delay(20);
-		Serial.println("GREEN +  ICON  KPD_K");
-		update_label_val(label_3, Temp_blue_1);
+		delay(20);
+		Serial.println("SAVE Number");
+		///Just to be used during debug to clear valuestring 
+		VALUE_Combined = "";
+		create_label(label_KEYPAD);//Create label to show keypad value
+		//////
 		return;
 	}
 	else { // do nothing *
 	}
 
-	/// BLUE -
-
-
+	///  Number 0
 	if (Touch_inRange(Xval, Yval, KPD_L))
 	{
-
-
-		Update_btn_press(KPD_L);
-
-		if (Temp_blue_1 >= 1) {
-			Temp_blue_1--;
-		}
-
-		///delay(1);
-		update_label_val(label_3, Temp_blue_1);
-		Serial.println("BLUE -  ICON  KPD_L");
+		Update_btn_press(KPD_K);
+		delay(20);
+		Serial.println("Number 0");
 		return;
 	}
-
 	else { // do nothing *
 	}
 
