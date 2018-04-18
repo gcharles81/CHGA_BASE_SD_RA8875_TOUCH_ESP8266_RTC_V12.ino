@@ -390,6 +390,12 @@ void TFT_MENU_ABOUT () {
 
 
   Update_KPDVAL(350, 120);
+
+
+  // keypad border 
+ // tft.drawRect(KPD_A[0] - 3, KPD_A[1] - 3, (KPD_L[0]  + 6), (KPD_L[1] + 57 + 6), RA8875_WHITE);
+ // tft.drawRect(KPD_A[0] - 2, KPD_A[1] - 2, KPD_L[0] + 57 + 4, KPD_L[1] + 57 + 4, RA8875_WHITE);
+
   create_btn(KPD_A);
   DELAY_00D();
   create_btn(KPD_B);

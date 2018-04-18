@@ -31,6 +31,65 @@ int KPD_J[4] = { KPD_X_VAl,KPD_Y_VAL,141,152};//[0] = location X , [1] = locatio
 int KPD_K[4] = { KPD_X_VAl,KPD_Y_VAL,117,21 };//[0] = location X , [1] = location Y ,[117] = pic number ,[3] = pic number "pressed":
 int KPD_L[4] = { KPD_X_VAl,KPD_Y_VAL, 148,159 };//[0] = location X , [1] = location Y ,[148] = pic number ,[159] = pic number "pressed":
 
+
+
+void Create_Keypad_01(int Xloc, int Yloc) {
+
+
+	/// ***** later we have to update the Layer handling if possible the keypad will be shown on transparent layer 
+
+	///create_label(label_KEYPAD);//Create label to show keypad value
+
+
+	Update_KPDVAL(Xloc, Yloc); /// Re Calculate the Button positions and update button array to be used for button position also for touch detection 
+
+
+	// ****** keypad border 
+
+	// tft.drawRect(KPD_A[0] - 3, KPD_A[1] - 3, (KPD_L[0]  + 6), (KPD_L[1] + 57 + 6), RA8875_WHITE);
+	// tft.drawRect(KPD_A[0] - 2, KPD_A[1] - 2, KPD_L[0] + 57 + 4, KPD_L[1] + 57 + 4, RA8875_WHITE);
+
+	// **********************
+
+	// Create the buttons ***
+
+	create_btn(KPD_A); //Create button 1 
+	DELAY_00D();
+	create_btn(KPD_B);//Create button 2 
+	DELAY_00D();
+	create_btn(KPD_C);//Create button 3 
+	DELAY_00D();
+	create_btn(KPD_D);//Create button 4 
+	DELAY_00D();
+	create_btn(KPD_E);//Create button 5
+	DELAY_00D();
+	create_btn(KPD_F);//Create button 6 
+	DELAY_00D();
+	create_btn(KPD_G);//Create button 7 
+	DELAY_00D();
+	create_btn(KPD_H);//Create button 8 
+	DELAY_00D();
+	create_btn(KPD_I);//Create button 9 
+	DELAY_00D();
+	create_btn(KPD_J);//Create button Cancel 
+	DELAY_00D();
+	create_btn(KPD_K);//Create button Save 
+	DELAY_00D();
+	create_btn(KPD_L);//Create button 0 
+	DELAY_00D();
+
+	// *******************
+
+	SCREEN_UPDATE = false; // False no continous refresh //
+
+
+}
+
+void DELAY_00D() {
+	delay(1);
+}
+
+
 void update_label_val_String(int16_t TDF[4], int val) {
 	create_label(label_KEYPAD);
 
@@ -282,8 +341,9 @@ void BUTTON_KPD_MENU(int Xval, int Yval) {
 	///  Number 0
 	if (Touch_inRange(Xval, Yval, KPD_L))
 	{
-		Update_btn_press(KPD_K);
+		Update_btn_press(KPD_L);
 		delay(20);
+		update_label_val_String(label_KEYPAD, 0);
 		Serial.println("Number 0");
 		return;
 	}
