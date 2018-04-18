@@ -42,6 +42,12 @@
     <ClInclude Include="CHGA_Keypad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Test_Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lable_handler_CHGA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="keypad.cpp">

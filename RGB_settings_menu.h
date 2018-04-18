@@ -13,14 +13,14 @@ int Temp_green_1 = 0;
 uint16_t lbl_back_color = RA8875_LIGHT_GREY;
 uint16_t lbl_TXT_color = RA8875_BLACK;
 
-int16_t label_1[4] = { 172,153,113,40 };
-int16_t ZHGF = label_1[2]/2;
-int16_t vcx = label_1[0] + ZHGF;
-int16_t ZHGFD = label_1[3] / 2;
-int16_t vcy = label_1[1] + ZHGFD;
+int16_t label_rgb_1[4] = { 172,153,113,40 };
+int16_t ZHGF = label_rgb_1[2]/2;
+int16_t vcx = label_rgb_1[0] + ZHGF;
+int16_t ZHGFD = label_rgb_1[3] / 2;
+int16_t vcy = label_rgb_1[1] + ZHGFD;
 
-int16_t label_2[4] = { 172, 233,113,40};
-int16_t label_3[4] = { 172, 313,113,40 };
+int16_t label_rgb_2[4] = { 172, 233,113,40};
+int16_t label_rgb_3[4] = { 172, 313,113,40 };
 /*
 int RED1   = 255; ///Read stored light Value
 int GREEN1 = 25;  ///Read stored light Value
@@ -103,44 +103,44 @@ void TFT_MENU_RGB_01(boolean reset_screen, int STATUS, int menu_nr) {
 	tft.fillRect(0, 63, 800, 4, RA8875_WHITE);//TOP title bar
 	tft.fillRect(0, 413, 800, 4, RA8875_WHITE);//BOTTOM title bar
 
-	create_label(label_1);//Create label for RED show value
-	create_label(label_2);//Create label for GREEN show value
-	create_label(label_3);//Create label for BLUE show value
+	create_label(label_rgb_1);//Create label for RED show value
+	create_label(label_rgb_2);//Create label for GREEN show value
+	create_label(label_rgb_3);//Create label for BLUE show value
 
 	if (menu_nr == 3) {
 		Temp_red_1 = RED1;
-		update_label_val(label_1, RED1);
+		update_label_val(label_rgb_1, RED1);
 		Temp_green_1 = GREEN1;
-		update_label_val(label_2, GREEN1);
+		update_label_val(label_rgb_2, GREEN1);
 		Temp_blue_1 = BLUE1;
-		update_label_val(label_3, BLUE1);
+		update_label_val(label_rgb_3, BLUE1);
 	}
 
 	if (menu_nr == 4) {
 		Temp_red_1 = RED2;
-		update_label_val(label_1, RED2);
+		update_label_val(label_rgb_1, RED2);
 		Temp_green_1 = GREEN2;
-		update_label_val(label_2, GREEN2);
+		update_label_val(label_rgb_2, GREEN2);
 		Temp_blue_1 = BLUE2;
-		update_label_val(label_3, BLUE2);
+		update_label_val(label_rgb_3, BLUE2);
 	}
 
 	if (menu_nr == 5) {
 		Temp_red_1 = RED3;
-		update_label_val(label_1, RED3);
+		update_label_val(label_rgb_1, RED3);
 		Temp_green_1 = GREEN3;
-		update_label_val(label_2, GREEN3);
+		update_label_val(label_rgb_2, GREEN3);
 		Temp_blue_1 = BLUE3;
-		update_label_val(label_3, BLUE3);
+		update_label_val(label_rgb_3, BLUE3);
 	}
 
 	if (menu_nr == 6) {
 		Temp_red_1 = RED4;
-		update_label_val(label_1, RED4);
+		update_label_val(label_rgb_1, RED4);
 		Temp_green_1 = GREEN4;
-		update_label_val(label_2, GREEN4);
+		update_label_val(label_rgb_2, GREEN4);
 		Temp_blue_1 = BLUE4;
-		update_label_val(label_3, BLUE4);
+		update_label_val(label_rgb_3, BLUE4);
 	}
 
 	/////////////WRITE SCREEN NAME//////////////////

@@ -32,96 +32,11 @@ int KPD_K[4] = { KPD_X_VAl,KPD_Y_VAL,117,21 };//[0] = location X , [1] = locatio
 int KPD_L[4] = { KPD_X_VAl,KPD_Y_VAL, 148,159 };//[0] = location X , [1] = location Y ,[148] = pic number ,[159] = pic number "pressed":
 
 
-
-void Create_Keypad_01(int Xloc, int Yloc) {
-
-
-	/// ***** later we have to update the Layer handling if possible the keypad will be shown on transparent layer 
-
-	///create_label(label_KEYPAD);//Create label to show keypad value
-
-
-	Update_KPDVAL(Xloc, Yloc); /// Re Calculate the Button positions and update button array to be used for button position also for touch detection 
-
-
-	// ****** keypad border 
-
-	// tft.drawRect(KPD_A[0] - 3, KPD_A[1] - 3, (KPD_L[0]  + 6), (KPD_L[1] + 57 + 6), RA8875_WHITE);
-	// tft.drawRect(KPD_A[0] - 2, KPD_A[1] - 2, KPD_L[0] + 57 + 4, KPD_L[1] + 57 + 4, RA8875_WHITE);
-
-	// **********************
-
-	// Create the buttons ***
-
-	create_btn(KPD_A); //Create button 1 
-	DELAY_00D();
-	create_btn(KPD_B);//Create button 2 
-	DELAY_00D();
-	create_btn(KPD_C);//Create button 3 
-	DELAY_00D();
-	create_btn(KPD_D);//Create button 4 
-	DELAY_00D();
-	create_btn(KPD_E);//Create button 5
-	DELAY_00D();
-	create_btn(KPD_F);//Create button 6 
-	DELAY_00D();
-	create_btn(KPD_G);//Create button 7 
-	DELAY_00D();
-	create_btn(KPD_H);//Create button 8 
-	DELAY_00D();
-	create_btn(KPD_I);//Create button 9 
-	DELAY_00D();
-	create_btn(KPD_J);//Create button Cancel 
-	DELAY_00D();
-	create_btn(KPD_K);//Create button Save 
-	DELAY_00D();
-	create_btn(KPD_L);//Create button 0 
-	DELAY_00D();
-
-	// *******************
-
-	SCREEN_UPDATE = false; // False no continous refresh //
-
-
-}
-
 void DELAY_00D() {
 	delay(1);
 }
 
-
-void update_label_val_String(int16_t TDF[4], int val) {
-	create_label(label_KEYPAD);
-
-	if (val == 99) {
-
-	//	VALUE_Combined.concat(val);
-
-		tft.setFontScale(1);//font x1
-
-		tft.setTextColor(lbl_TXT_color, lbl_back_color);
-
-		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
-
-		tft.print(VALUE_Combined);
-	}
-
-	else {
-		VALUE_Combined.concat(val);
-
-		tft.setFontScale(1);//font x1
-
-		tft.setTextColor(lbl_TXT_color, lbl_back_color);
-
-		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
-
-		tft.print(VALUE_Combined);
-	}
-
-
-}
-
-void Update_KPDVAL(int XXX , int YYY) {
+void Update_KPDVAL(int XXX, int YYY) {
 
 	int temp_X = XXX;
 	int temp_Y = YYY;
@@ -188,169 +103,92 @@ void Update_KPDVAL(int XXX , int YYY) {
 }
 
 ///
-void BUTTON_KPD_MENU(int Xval, int Yval) {
-	
-	//////////////////////////////////////////////////
-	/// Number 1  KPD_A
-	if (Touch_inRange(Xval, Yval, KPD_A))
-	{
-		delay(20);
-		Update_btn_press(KPD_A);
-		update_label_val_String(label_KEYPAD, 1);
-		Serial.println("Number 1");
-		return;
-	}
 
-	else { // do nothing *
-	}
-	////Number 2 KPD_B
-	if (Touch_inRange(Xval, Yval, KPD_B))
-	{
-		Update_btn_press(KPD_B);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 2);
-		Serial.println("Number 2");
-		return;
-	}
-	else { // do nothing *
-	}
-	///   Number 3
-	if (Touch_inRange(Xval, Yval, KPD_C))
-	{
-		Update_btn_press(KPD_C);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 3);
-		Serial.println("Number 3");
-		return;
-	}
-	else { // do nothing *
-	}
-	/// Number 4
-	if (Touch_inRange(Xval, Yval, KPD_D))
-	{
-		Update_btn_press(KPD_D);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 4);
-		Serial.println("Number 4");
-		return;
+void Create_Keypad_01(int Xloc, int Yloc) {
 
 
-	}
-	else { // do nothing *
-	}
-	/// Number 5
-	if (Touch_inRange(Xval, Yval, KPD_E))
-	{
-		Update_btn_press(KPD_E);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 5);
+	/// ***** later we have to update the Layer handling if possible the keypad will be shown on transparent layer 
+
+	///create_label(label_KEYPAD);//Create label to show keypad value
 
 
-		Serial.println("Number 5");
-		return;
-	}
-	else { // do nothing *
-	}
-	/// Number 6
-	if (Touch_inRange(Xval, Yval, KPD_F))
-	{
-		Update_btn_press(KPD_F);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 6);
-		Serial.println("Number 6");
-
-		return;
-	}
-
-	else { // do nothing *
-	}
-	/// Number 7
-	if (Touch_inRange(Xval, Yval, KPD_G))
-	{
-		Update_btn_press(KPD_G);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 7);
-		Serial.println("Number 7");
-		
-		return;
-	}
-
-	else { // do nothing *
-	}
-	/// Number 8
-	if (Touch_inRange(Xval, Yval, KPD_H))
-	{
-		Update_btn_press(KPD_H);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 8);
-		Serial.println("Number 8");
-		return;
-	}
-
-	else { // do nothing *
-	}
-
-	/// Number 9
-	if (Touch_inRange(Xval, Yval, KPD_I))
-	{
-		Update_btn_press(KPD_I);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 9);
-		Serial.print("Number 8");
-		return;
-	}
+	Update_KPDVAL(Xloc, Yloc); /// Re Calculate the Button positions and update button array to be used for button position also for touch detection 
 
 
-	else { // do nothing *
-	}
+	// ****** keypad border 
 
-	/// Cancel
+	// tft.drawRect(KPD_A[0] - 3, KPD_A[1] - 3, (KPD_L[0]  + 6), (KPD_L[1] + 57 + 6), RA8875_WHITE);
+	// tft.drawRect(KPD_A[0] - 2, KPD_A[1] - 2, KPD_L[0] + 57 + 4, KPD_L[1] + 57 + 4, RA8875_WHITE);
 
-	if (Touch_inRange(Xval, Yval, KPD_J))
-	{
-		Update_btn_press(KPD_J);
-		delay(20);
-		Serial.println("Cancel");
-		
-		int length = (VALUE_Combined.length());
+	// **********************
 
-		VALUE_Combined.remove(length - 1,1); // Remove six characters starting at index=2
-		update_label_val_String(label_KEYPAD, 99);
-		//VALUE_Combined[length - 1] = '\0';
+	// Create the buttons ***
 
-		return;
-	}
+	create_btn(KPD_A); //Create button 1 
+	DELAY_00D();
+	create_btn(KPD_B);//Create button 2 
+	DELAY_00D();
+	create_btn(KPD_C);//Create button 3 
+	DELAY_00D();
+	create_btn(KPD_D);//Create button 4 
+	DELAY_00D();
+	create_btn(KPD_E);//Create button 5
+	DELAY_00D();
+	create_btn(KPD_F);//Create button 6 
+	DELAY_00D();
+	create_btn(KPD_G);//Create button 7 
+	DELAY_00D();
+	create_btn(KPD_H);//Create button 8 
+	DELAY_00D();
+	create_btn(KPD_I);//Create button 9 
+	DELAY_00D();
+	create_btn(KPD_J);//Create button Cancel 
+	DELAY_00D();
+	create_btn(KPD_K);//Create button Save 
+	DELAY_00D();
+	create_btn(KPD_L);//Create button 0 
+	DELAY_00D();
 
-	else { // do nothing *
-	}
-	/// SAVE Number
-	if (Touch_inRange(Xval, Yval, KPD_K))
-	{
-		Update_btn_press(KPD_K);
-		delay(20);
-		Serial.println("SAVE Number");
-		///Just to be used during debug to clear valuestring 
-		VALUE_Combined = "";
-		create_label(label_KEYPAD);//Create label to show keypad value
-		//////
-		return;
-	}
-	else { // do nothing *
-	}
+	// *******************
 
-	///  Number 0
-	if (Touch_inRange(Xval, Yval, KPD_L))
-	{
-		Update_btn_press(KPD_L);
-		delay(20);
-		update_label_val_String(label_KEYPAD, 0);
-		Serial.println("Number 0");
-		return;
-	}
-	else { // do nothing *
-	}
+	SCREEN_UPDATE = false; // False no continous refresh //
 
-	///////////////
 
-	SCREEN_UPDATE = false;
 }
+
+
+
+
+void update_label_val_String(int16_t TDF[4], int val) {
+	
+	create_label(label_KEYPAD);
+
+	if (val == 99) {
+
+	//	VALUE_Combined.concat(val);
+
+		tft.setFontScale(1);//font x1
+
+		tft.setTextColor(lbl_TXT_color, lbl_back_color);
+
+		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
+
+		tft.print(VALUE_Combined);
+	}
+
+	else {
+		VALUE_Combined.concat(val);
+
+		tft.setFontScale(1);//font x1
+
+		tft.setTextColor(lbl_TXT_color, lbl_back_color);
+
+		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
+
+		tft.print(VALUE_Combined);
+	}
+
+
+}
+
+

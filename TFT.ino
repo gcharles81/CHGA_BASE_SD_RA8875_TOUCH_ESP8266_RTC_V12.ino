@@ -372,9 +372,15 @@ void TFT_MENU_PH () {
   SCREEN_UPDATE = false;
 }
 
-void TFT_MENU_ABOUT () {
-   tft.clearScreen();
-  delay(80);
+void TFT_MENU_ABOUT (boolean reset_screen, int STATUS, int menu_nr) {
+
+	if (reset_screen == true) {
+		tft.clearScreen();
+
+		delay(50);
+	}
+
+
   tft.fillRect(0, 5, 790, 55, RA8875_LIGHT_ORANGE);//Top title bar
   tft.fillRoundRect(60, 426, 730, 48, 12, RA8875_DARK_ORANGE);//BOTTOM title bar
                               /////////////WITE MAIN SCREEN NAME//////////////////
@@ -386,7 +392,24 @@ void TFT_MENU_ABOUT () {
   tft.print("ABOUT");
   delay(80);
 
-  create_label(label_KEYPAD);//Create label to show keypad value
+
+  create_label(label_test_1);//Create label for RED show value
+  create_label(label_test_2);//Create label for GREEN show value
+  create_label(label_test_3);//Create label for BLUE show value
+
+
+
+
+
+  create_btn(M8B_A);
+
+
+
+
+
+
+  /*
+//create_label(label_KEYPAD);//Create label to show keypad value
 
 
   Update_KPDVAL(350, 120);
@@ -420,14 +443,14 @@ void TFT_MENU_ABOUT () {
   DELAY_00D();
   create_btn(KPD_L);
   DELAY_00D();
+
+  */
   SCREEN_UPDATE = false;
    
 
 }
 
-void DELAY_00D() {
-	delay(1);
-}
+
 
 void DELAY_001 (){
   delay(1);

@@ -254,12 +254,20 @@ boolean MANUAL_CH3_Override = false;
 boolean MANUAL_CH4_Override = false;
 ///////////////////////////////////////////////////////////////////////////////////
 
-
+////
+boolean label_test_1_Locked = false;
+boolean label_test_2_Locked = false;
+boolean label_test_3_Locked = false;
+//
 #include "All_75_Pic_65K.h"
 #include "Buttons_handler_CHGA.h"
+
 #include "RGB_settings_menu.h"
 #include "CHGA_Keypad.h"
+#include "Test_Menu.h"
 
+
+#include "Lable_handler_CHGA.h"
 
 ////////////ESP8266//////CHGA
 
@@ -595,13 +603,18 @@ void loop(void) {
       case 7:    // your hand is nowhere near the sensor
 
         Serial.println("ENTER TFT MENU ABOUT");
-        TFT_MENU_ABOUT();
+     TFT_MENU_ABOUT(true, 0, MENU);
         //  Numeric_Keypad_TFT(100, 10);
 
 
         break;
 
+	  case 8:    // your hand is nowhere near the sensor
 
+		  Serial.println("ENTER TFT MENU ABOUT");
+		  TFT_MENU_ABOUT(true, 0, MENU);
+		  //  Numeric_Keypad_TFT(100, 10);
+		  break;
     }
 
 	
