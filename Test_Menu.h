@@ -85,6 +85,35 @@ void Test_menu_update_label_val_String(int val) {
 
 		tft.print(VALUE_Combined);
 	}
+
+
+	if ((val == 99) && (label_test_3_Locked == true)) {
+
+		create_label(label_test_3);//Create lable to reset
+
+		tft.setFontScale(1);//font x1
+
+		tft.setTextColor(lbl_TXT_color, lbl_back_color);
+
+		tft.setCursor(((label_test_3[2] / 2) + label_test_3[0]), ((label_test_3[3] / 2) + label_test_3[1]), true);
+
+		tft.print(VALUE_Combined);
+	}
+
+	else if ((val < 99) && (label_test_3_Locked == true) && (VALUE_Combined.length()<3))
+	{
+		create_label(label_test_3);//Create lable to reset
+
+		VALUE_Combined.concat(val);
+
+		tft.setFontScale(1);//font x1
+
+		tft.setTextColor(lbl_TXT_color, lbl_back_color);
+
+		tft.setCursor(((label_test_3[2] / 2) + label_test_3[0]), ((label_test_3[3] / 2) + label_test_3[1]), true);
+
+		tft.print(VALUE_Combined);
+	}
 }
 
 

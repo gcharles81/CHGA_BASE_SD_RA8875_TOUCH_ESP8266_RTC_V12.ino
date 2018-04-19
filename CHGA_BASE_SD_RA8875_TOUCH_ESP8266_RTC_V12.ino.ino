@@ -66,7 +66,7 @@ long previousMillis = 0;        // will store last time LED was updated
 long interval = 2000;           // interval at which to blink (milliseconds)
 ///////////////////////////////////////////////////////////////////////////////////
 //*********************MENUS RELATED********************************************///
-int MENU = 0;
+int MENU_NR = 0;
 boolean Valid_button_menu_touch = false;////new chaga
 boolean SCREEN_UPDATE = true;//////just for X_COL_2
 boolean SUB_SCREEN_UPDATE = false;//////just for X_COL_2
@@ -571,7 +571,8 @@ void loop(void) {
 
   if (SCREEN_UPDATE == true) {
 
-    switch (MENU) {
+
+    switch (MENU_NR) {
       case 0:    // your hand is on the sensor
         Serial.println("TFT MENU 0 Needs update");
         TFT_MAIN_PANEL();
@@ -586,24 +587,24 @@ void loop(void) {
         break;
       case 3:    // your hand is nowhere near the sensor
         Serial.println("ENTER TFT RGB CONFCH 1 ");
-        TFT_MENU_RGB_01(true, 0,MENU);
+        TFT_MENU_RGB_01(true, 0,MENU_NR);
         break;
       case 4:    // your hand is a few inches from the sensor
 		  Serial.println("ENTER TFT RGB CONFCH 2 ");
-		  TFT_MENU_RGB_01(true, 0, MENU);
+		  TFT_MENU_RGB_01(true, 0, MENU_NR);
         break;
       case 5:    // your hand is nowhere near the sensor
 		  Serial.println("ENTER TFT RGB CONFCH 3 ");
-		  TFT_MENU_RGB_01(true, 0, MENU);
+		  TFT_MENU_RGB_01(true, 0, MENU_NR);
         break;
       case 6:    // your hand is nowhere near the sensor
 		  Serial.println("ENTER TFT RGB CONFCH 4 ");
-		  TFT_MENU_RGB_01(true, 0, MENU);
+		  TFT_MENU_RGB_01(true, 0, MENU_NR);
         break;
       case 7:    // your hand is nowhere near the sensor
 
         Serial.println("ENTER TFT MENU ABOUT");
-     TFT_MENU_ABOUT(true, 0, MENU);
+     TFT_MENU_ABOUT(true, 0, MENU_NR);
         //  Numeric_Keypad_TFT(100, 10);
 
 
@@ -612,7 +613,7 @@ void loop(void) {
 	  case 8:    // your hand is nowhere near the sensor
 
 		  Serial.println("ENTER TFT MENU ABOUT");
-		  TFT_MENU_ABOUT(true, 0, MENU);
+		  TFT_MENU_ABOUT(true, 0, MENU_NR);
 		  //  Numeric_Keypad_TFT(100, 10);
 		  break;
     }
@@ -620,44 +621,7 @@ void loop(void) {
 	
   }
 
-  /*
-    int ch_id, packet_len;
-    unsigned long t1, t;
-    char *pb;
-
-    // send UDP packet
-    Serial.println("UDP send");
-    while(Serial1.available()) Serial1.read();  // flush responses
-    t1=millis();
-    Serial1.print("AT+CIPSEND=4,");
-    Serial1.println(sizeof(query));
-    wait_for_esp_response(1000);
-    Serial1.write((uint8_t *)query,sizeof(query));
-
-    if (!binfind("+IPD,4,48:")){
-     Serial.println("IPD timeout");
-          delay(10000);
-    return;
-    }
-    t1= millis()-t1;
-    // parse out ntp reply  +IPD,4,48:xxxxxxxxxxxxx
-    // ntp packet is network-byte order, big endian
-    Serial1.readBytes(buffer,sizeof(query));
-    unsigned long secsSince1900;
-    secsSince1900 = (unsigned long)buffer[40] << 24;
-    secsSince1900 |= (unsigned long)buffer[41] << 16;
-    secsSince1900 |= (unsigned long)buffer[42] << 8;
-    secsSince1900 |= (unsigned long)buffer[43];
-    t = secsSince1900 - 2208988800UL + timeZone * 3600;
-    Serial.print(t1); Serial.println(" ms");
-    Serial.println(t);
-       tft.setCursor(5, 10);
-
-      tft.print(t);//did you see it?
-
-    wait_for_esp_response(1000);
-    delay(10000);
-  */
+ 
 }
 
 

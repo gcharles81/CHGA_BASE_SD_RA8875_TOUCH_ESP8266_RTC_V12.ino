@@ -75,20 +75,20 @@ tft.clearScreen();
         break;
         case '+':
         Serial.println("MENU +");
-MENU++;
+MENU_NR++;
 SCREEN_UPDATE = true;
         break;
         
         case '-':
         Serial.println("Menu -");
-        MENU--;
+        MENU_NR--;
         SCREEN_UPDATE = true;
         break;
         
         case '3':
         Serial.println("333");
 
-        MENU = 0;
+        MENU_NR = 0;
     //    redrawTFT = true;
         break;
         
