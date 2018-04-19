@@ -16,8 +16,8 @@
 #define __HARDWARE_MK66FX1M0__
 #define _VMDEBUG 1
 #define __MK66FX1M0__
-#define TEENSYDUINO 141
-#define ARDUINO 10805
+#define TEENSYDUINO 139
+#define ARDUINO 10804
 #define F_CPU 180000000
 #define USB_SERIAL
 #define LAYOUT_US_ENGLISH
