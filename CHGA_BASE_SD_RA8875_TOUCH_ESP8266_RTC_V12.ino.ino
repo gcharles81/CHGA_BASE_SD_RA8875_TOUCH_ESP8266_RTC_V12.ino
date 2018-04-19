@@ -254,11 +254,7 @@ boolean MANUAL_CH3_Override = false;
 boolean MANUAL_CH4_Override = false;
 ///////////////////////////////////////////////////////////////////////////////////
 
-////
-boolean label_test_1_Locked = false;
-boolean label_test_2_Locked = false;
-boolean label_test_3_Locked = false;
-//
+
 #include "All_75_Pic_65K.h"
 #include "Buttons_handler_CHGA.h"
 
