@@ -61,18 +61,61 @@ void GET_TOUCH_XY_VALUE () {
 		BUTTON_TOUCH_RGB_MENU(new_coordinates[0][0], new_coordinates[0][1]);
 		RGB_BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
       break;
-    case 7:    // your hand is close to the sensor
-		//BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1]);
-     // Serial.println("HOME BUTTON pressed");
-		if (label_test_1_Locked == false) {
-			TEST_Lable_Menu(new_coordinates[0][0], new_coordinates[0][1]);
-			BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
-		}
-		else if(label_test_1_Locked == true) {
-			BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1],label_test_1);
-		} //Do nothing
-      break;
 
+
+
+    case 7:    // Menu number 7/ 
+
+
+		TEST_Lable_Menu_NEW(new_coordinates[0][0], new_coordinates[0][1]);
+
+
+		Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+
+		if (MENU_NR > 0) {
+
+			BUTTON_KPD_MENU_New(new_coordinates[0][0], new_coordinates[0][1], label_test_3);
+
+		}
+
+
+
+		/*
+      // lets check  subitems 
+		if (label_test_1_Locked == false) {
+
+			TEST_Lable_Menu(new_coordinates[0][0], new_coordinates[0][1]);
+			Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		}
+		else if (label_test_1_Locked == true) {
+
+			BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1], label_test_1);
+			
+		} //Do nothing
+		if (label_test_2_Locked == false) {
+
+			TEST_Lable_Menu(new_coordinates[0][0], new_coordinates[0][1]);
+			Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		}
+		else if (label_test_2_Locked == true) {
+
+			BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1], label_test_2);
+
+		} 
+		if (label_test_3_Locked == false) {
+
+			TEST_Lable_Menu(new_coordinates[0][0], new_coordinates[0][1]);
+			Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		}
+		else if (label_test_3_Locked == true) {
+
+			BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1], label_test_3);
+
+		} 
+
+		*/
+		break;
+		///
   }
  
   if (SUB_SCREEN_UPDATE == true) {
@@ -116,178 +159,6 @@ void TRACK_BAR_POSITION(int Xtemp, int Ytemp) {
 
 	}
 
-}
-
-void BUTTON_KPD_MENU(int Xval, int Yval, int16_t LABLE[4]) {
-
-	//////////////////////////////////////////////////
-	/// Number 1  KPD_A
-	if (Touch_inRange(Xval, Yval, KPD_A))
-	{
-
-		delay(20);
-		Update_btn_press(KPD_A);
-		if (label_test_1_Locked == true) {
-			Test_menu_update_label_val_String(1);
-		}
-	
-
-		Serial.println("Number 1");
-		return;
-	}
-
-	else { // do nothing *
-	}
-	////Number 2 KPD_B
-	if (Touch_inRange(Xval, Yval, KPD_B))
-	{
-		Update_btn_press(KPD_B);
-		delay(20);
-		Test_menu_update_label_val_String(2);
-		Serial.println("Number 2");
-		return;
-	}
-	else { // do nothing *
-	}
-	///   Number 3
-	if (Touch_inRange(Xval, Yval, KPD_C))
-	{
-		Update_btn_press(KPD_C);
-		delay(20);
-		Test_menu_update_label_val_String(3);
-		Serial.println("Number 3");
-		return;
-	}
-	else { // do nothing *
-	}
-	/// Number 4
-	if (Touch_inRange(Xval, Yval, KPD_D))
-	{
-		Update_btn_press(KPD_D);
-		delay(20);
-		Test_menu_update_label_val_String(4);
-		Serial.println("Number 4");
-		return;
-
-
-	}
-	else { // do nothing *
-	}
-	/// Number 5
-	if (Touch_inRange(Xval, Yval, KPD_E))
-	{
-		Update_btn_press(KPD_E);
-		delay(20);
-		Test_menu_update_label_val_String(5);
-
-
-		Serial.println("Number 5");
-		return;
-	}
-	else { // do nothing *
-	}
-	/// Number 6
-	if (Touch_inRange(Xval, Yval, KPD_F))
-	{
-		Update_btn_press(KPD_F);
-		delay(20);
-		Test_menu_update_label_val_String(6);
-		Serial.println("Number 6");
-
-		return;
-	}
-
-	else { // do nothing *
-	}
-	/// Number 7
-	if (Touch_inRange(Xval, Yval, KPD_G))
-	{
-		Update_btn_press(KPD_G);
-		delay(20);
-		Test_menu_update_label_val_String(7);
-		Serial.println("Number 7");
-
-		return;
-	}
-
-	else { // do nothing *
-	}
-	/// Number 8
-	if (Touch_inRange(Xval, Yval, KPD_H))
-	{
-		Update_btn_press(KPD_H);
-		delay(20);
-		Test_menu_update_label_val_String(8);
-		Serial.println("Number 8");
-		return;
-	}
-
-	else { // do nothing *
-	}
-
-	/// Number 9
-	if (Touch_inRange(Xval, Yval, KPD_I))
-	{
-		Update_btn_press(KPD_I);
-		delay(20);
-		Test_menu_update_label_val_String(9);
-		Serial.print("Number 8");
-		return;
-	}
-
-
-	else { // do nothing *
-	}
-
-	/// Cancel
-
-	if (Touch_inRange(Xval, Yval, KPD_J))
-	{
-		Update_btn_press(KPD_J);
-		delay(20);
-		Serial.println("Cancel");
-
-		int length = (VALUE_Combined.length());
-
-		VALUE_Combined.remove(length - 1, 1); // Remove six characters starting at index=2
-		Test_menu_update_label_val_String(99);
-		//VALUE_Combined[length - 1] = '\0';
-
-		return;
-	}
-
-	else { // do nothing *
-	}
-	/// SAVE Number
-	if (Touch_inRange(Xval, Yval, KPD_K))
-	{
-		Update_btn_press(KPD_K);
-		delay(20);
-		Serial.println("SAVE Number");
-		///Just to be used during debug to clear valuestring 
-		VALUE_Combined = "";
-		create_label(label_KEYPAD);//Create label to show keypad value
-								   //////
-		return;
-	}
-	else { // do nothing *
-	}
-
-	///  Number 0
-	if (Touch_inRange(Xval, Yval, KPD_L))
-	{
-		Update_btn_press(KPD_L);
-		delay(20);
-		Test_menu_update_label_val_String(0);
-		Serial.println("Number 0");
-		return;
-	}
-	else { // do nothing *
-	}
-
-	///////////////
-
-	SCREEN_UPDATE = false;
 }
 
 

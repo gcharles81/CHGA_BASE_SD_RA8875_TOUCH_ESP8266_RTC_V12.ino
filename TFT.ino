@@ -396,8 +396,9 @@ void TFT_MENU_ABOUT (boolean reset_screen, int STATUS, int menu_nr) {
   create_label(label_test_2);//Create label for GREEN show value
   create_label(label_test_3);//Create label for BLUE show value
 
-
-
+  update_label_val(label_test_1, label_test_1_Value);
+  update_label_val(label_test_2, label_test_2_Value);
+  update_label_val(label_test_3, label_test_3_Value);
 
 
   create_btn(M8B_A);

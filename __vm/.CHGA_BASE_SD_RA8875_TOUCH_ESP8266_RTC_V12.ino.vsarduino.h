@@ -64,6 +64,7 @@ typedef void *__builtin_va_list;
 
 #define NEW_H
 #include "CHGA_BASE_SD_RA8875_TOUCH_ESP8266_RTC_V12.ino.ino"
+#include "BEST_NEW.ino"
 #include "FLASH.ino"
 #include "SD_BMP.ino"
 #include "SD_Config_CHGA.ino"

@@ -67,15 +67,12 @@ long interval = 2000;           // interval at which to blink (milliseconds)
 ///////////////////////////////////////////////////////////////////////////////////
 //*********************MENUS RELATED********************************************///
 int MENU_NR = 0;
+int Menu_item = 0;
+
 boolean Valid_button_menu_touch = false;////new chaga
 boolean SCREEN_UPDATE = true;//////just for X_COL_2
 boolean SUB_SCREEN_UPDATE = false;//////just for X_COL_2
 int Settings_Menu_button_number = 0;
-int MENU1 = 0;
-int MENU2 = 0;
-int MENU3 = 0;
-int MENU4 = 0;
-int MENU5 = 0;
 int i = 0;
 ///////////////////////////////////////////////////////////////////////////////////
 //////////////////TOUCH CAPACITIVE////////////////////////////////////////////////////////////
@@ -254,11 +251,7 @@ boolean MANUAL_CH3_Override = false;
 boolean MANUAL_CH4_Override = false;
 ///////////////////////////////////////////////////////////////////////////////////
 
-////
-boolean label_test_1_Locked = false;
-boolean label_test_2_Locked = false;
-boolean label_test_3_Locked = false;
-//
+
 #include "All_75_Pic_65K.h"
 #include "Buttons_handler_CHGA.h"
 
@@ -604,6 +597,8 @@ void loop(void) {
       case 7:    // your hand is nowhere near the sensor
 
         Serial.println("ENTER TFT MENU ABOUT");
+		update_label_values_from_int();
+
      TFT_MENU_ABOUT(true, 0, MENU_NR);
         //  Numeric_Keypad_TFT(100, 10);
 
