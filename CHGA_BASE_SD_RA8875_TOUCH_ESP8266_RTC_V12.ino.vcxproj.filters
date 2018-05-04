@@ -48,6 +48,9 @@
     <ClInclude Include="Lable_handler_CHGA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TESTING_EEPROM_HANDLER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="keypad.cpp">

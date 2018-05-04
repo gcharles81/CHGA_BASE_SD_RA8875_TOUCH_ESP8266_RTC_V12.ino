@@ -261,7 +261,7 @@ boolean MANUAL_CH4_Override = false;
 #include "RGB_settings_menu.h"
 #include "CHGA_Keypad.h"
 #include "Test_Menu.h"
-
+#include "TESTING_EEPROM_HANDLER.h"
 
 #include "Lable_handler_CHGA.h"
 

@@ -16,15 +16,14 @@
 #define __HARDWARE_MK66FX1M0__
 #define _VMDEBUG 1
 #define __MK66FX1M0__
-#define TEENSYDUINO 141
-#define ARDUINO 10805
+#define TEENSYDUINO 139
+#define ARDUINO 10804
 #define F_CPU 180000000
 #define USB_SERIAL
 #define LAYOUT_US_ENGLISH
 #define __cplusplus 201103L
 #define __arm__
 #define __ARM__
-#define __extension__
 #define  __attribute__(x)
 typedef void *__builtin_va_list;
 #define __extension__
@@ -33,8 +32,6 @@ typedef void *__builtin_va_list;
 #define __inline__
 #define __asm__ 
 #define __volatile__
-#define _HAVE_STDC
-
 #define NEW_H
 
 
@@ -46,23 +43,10 @@ typedef void *__builtin_va_list;
 #define degrees(rad) ((rad)*RAD_TO_DEG)
 #define sq(x) ((x)*(x))
 
-#define __arm__
-#define __ARM__
-#define __extension__
-#define  __attribute__(x)
-typedef void *__builtin_va_list;
-#define __extension__
-#define __ATTR_PURE__
-#define __ATTR_CONST__
-#define __inline__
-#define __asm__ 
-#define __volatile__
-
 #define __disable_irq() __asm__ volatile("");
 #define __enable_irq()	__asm__ volatile("");
 
 
-#define NEW_H
 #include "CHGA_BASE_SD_RA8875_TOUCH_ESP8266_RTC_V12.ino.ino"
 #include "FLASH.ino"
 #include "SD_BMP.ino"
