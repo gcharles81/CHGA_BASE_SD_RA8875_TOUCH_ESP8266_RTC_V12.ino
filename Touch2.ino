@@ -23,7 +23,7 @@ void GET_TOUCH_XY_VALUE () {
  
 
   tft.setCursor(0, 0); //set cursor work in pixel!!!
-  switch (MENU) {
+  switch (MENU_NR) {
     case 0:    // your hand is on the sensor
       Serial.println("MENU 0 BUTTON pressed");
       BUTTON_TOUCH_MENU_0_1 (new_coordinates[0][0], new_coordinates[0][1]);
@@ -43,31 +43,79 @@ void GET_TOUCH_XY_VALUE () {
 
       Serial.println("RGB 1 CONFIGURATION MENU BUTTON pressed");
       BUTTON_TOUCH_RGB_MENU(new_coordinates[0][0], new_coordinates[0][1]);
-	  RGB_Settings_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+	  RGB_BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
 	  TRACK_BAR_POSITION(new_coordinates[0][0], new_coordinates[0][1]);
       break;
     case 4:    // your hand is close to the sensor
 		Serial.println("RGB 2 CONFIGURATION MENU BUTTON pressed");
 		BUTTON_TOUCH_RGB_MENU(new_coordinates[0][0], new_coordinates[0][1]);
-		RGB_Settings_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		RGB_BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
       break;
     case 5:    // your hand is a few inches from the sensor
 		Serial.println("RGB 3 CONFIGURATION MENU BUTTON pressed");
 		BUTTON_TOUCH_RGB_MENU(new_coordinates[0][0], new_coordinates[0][1]);
-		RGB_Settings_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		RGB_BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
       break;
     case 6:    // your hand is nowhere near the sensor
 		Serial.println("RGB 4 CONFIGURATION MENU BUTTON pressed");
 		BUTTON_TOUCH_RGB_MENU(new_coordinates[0][0], new_coordinates[0][1]);
-		RGB_Settings_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
-      break;
-    case 7:    // your hand is close to the sensor
-		//BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1]);
-     // Serial.println("HOME BUTTON pressed");
-		Test_Menu_Subitems_Check(new_coordinates[0][0], new_coordinates[0][1]);
-
+		RGB_BUTTON_HOME(new_coordinates[0][0], new_coordinates[0][1]);
       break;
 
+
+
+    case 7:    // Menu number 7/ 
+
+
+		TEST_Lable_Menu_NEW(new_coordinates[0][0], new_coordinates[0][1]);
+
+
+		Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+
+		if (MENU_NR > 0) {
+
+			BUTTON_KPD_MENU_New(new_coordinates[0][0], new_coordinates[0][1], label_test_3);
+
+		}
+
+
+
+		/*
+      // lets check  subitems 
+		if (label_test_1_Locked == false) {
+
+			TEST_Lable_Menu(new_coordinates[0][0], new_coordinates[0][1]);
+			Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		}
+		else if (label_test_1_Locked == true) {
+
+			BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1], label_test_1);
+			
+		} //Do nothing
+		if (label_test_2_Locked == false) {
+
+			TEST_Lable_Menu(new_coordinates[0][0], new_coordinates[0][1]);
+			Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		}
+		else if (label_test_2_Locked == true) {
+
+			BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1], label_test_2);
+
+		} 
+		if (label_test_3_Locked == false) {
+
+			TEST_Lable_Menu(new_coordinates[0][0], new_coordinates[0][1]);
+			Test_Menu_BTN_Home(new_coordinates[0][0], new_coordinates[0][1]);
+		}
+		else if (label_test_3_Locked == true) {
+
+			BUTTON_KPD_MENU(new_coordinates[0][0], new_coordinates[0][1], label_test_3);
+
+		} 
+
+		*/
+		break;
+		///
   }
  
   if (SUB_SCREEN_UPDATE == true) {
@@ -116,7 +164,6 @@ void TRACK_BAR_POSITION(int Xtemp, int Ytemp) {
 
 
 
-
 void RESET_Temp_touch_values () {
   //Set all touch X,Y,Fingers temp values to 0
   Temp_TOUCH_X_VAL = 0;
@@ -134,7 +181,7 @@ void BUTTON_HOME (int Xtemp , int Ytemp) {
   if ((Xtemp > 5 && Xtemp < 85 ) && (Ytemp > 395 && Ytemp < 475)) {
     Serial.println("HOME BUTTON PRESSED A");
 
-    MENU = 0;            // MENU SET TO 0 MEANING HOME SCREEN;
+    MENU_NR = 0;            // MENU SET TO 0 MEANING HOME SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE HOME BUTTON WAS PRESSED;
   }
 }
@@ -149,7 +196,7 @@ void BUTTON_TOUCH_MENU_0_1 (int Xtemp , int Ytemp) {
     tft.dispicown(1, 417, 66, 66, 1574616); //Dispay pic172 // For pressed state.
     delay(25);//We have to wait 25 ms after we load pipc from Flash must
 
-    MENU = 1;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
+    MENU_NR = 1;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE SETTINGS BUTTON WAS PRESSED;
 
   }
@@ -177,7 +224,7 @@ void BUTTON_TOUCH_SETTINGS_MENU (int Xtemp , int Ytemp) {
     delay(200);//We have to wait 25 ms after we load pipc from Flash mus
     //
 
-    MENU = 2;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
+    MENU_NR = 2;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE SETTINGS BUTTON WAS PRESSED;
     //delay(200);
     return;
@@ -191,7 +238,7 @@ void BUTTON_TOUCH_SETTINGS_MENU (int Xtemp , int Ytemp) {
     tft.dispicown(X_COL_2, Y_ROW_1, icon_Size, icon_Size, 4253816); //Dispay pic384 384,     130,     130, 4253816, For pressed state.
 
 
-    MENU = 3;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
+    MENU_NR = 3;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE SETTINGS BUTTON WAS PRESSED;
     delay(200);//We have to wait 25 ms after we load pipc from Flash mus
     return;
@@ -204,7 +251,7 @@ void BUTTON_TOUCH_SETTINGS_MENU (int Xtemp , int Ytemp) {
     tft.dispicown(X_COL_3, Y_ROW_1, icon_Size, icon_Size, 2259424); //Dispay pic237,     130,     130, 2259424, For pressed state.
     delay(200);//We have to wait 25 ms after we load pipc from Flash mus
 
-    MENU = 4;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
+    MENU_NR = 4;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE SETTINGS BUTTON WAS PRESSED;
 
     return;
@@ -216,7 +263,7 @@ void BUTTON_TOUCH_SETTINGS_MENU (int Xtemp , int Ytemp) {
     delay(200);//We have to wait 25 ms after we load pipc from Flash mus
     //
 
-    MENU = 5;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
+    MENU_NR = 5;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE SETTINGS BUTTON WAS PRESSED;
     //delay(200);
     return;
@@ -230,7 +277,7 @@ void BUTTON_TOUCH_SETTINGS_MENU (int Xtemp , int Ytemp) {
     tft.dispicown(X_COL_2, Y_ROW_2, icon_Size, icon_Size, 4652408); //Dispay pic 416,     130,     130, 4652408, For pressed state.
     delay(200);//We have to wait 25 ms after we load pipc from Flash mus
 
-    MENU = 6;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
+    MENU_NR = 6;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE SETTINGS BUTTON WAS PRESSED;
 
     return;
@@ -243,7 +290,7 @@ void BUTTON_TOUCH_SETTINGS_MENU (int Xtemp , int Ytemp) {
     tft.dispicown(X_COL_3, Y_ROW_2, icon_Size, icon_Size, 7492608); //Dispay pic  609,     130,     130, 7492608,For pressed state.
     delay(200);//We have to wait 25 ms after we load pipc from Flash mus
 
-    MENU = 7;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
+    MENU_NR = 7;            // MENU SET TO 1 MEANING SETTINGS SCREEN;
     SCREEN_UPDATE = true; // UPDATE SCREEN SINCE SETTINGS BUTTON WAS PRESSED;
 
     return;
@@ -678,11 +725,11 @@ void BUTTON_TOUCH_RGB_MENU(int Xval, int Yval) {
 	else { // do nothing *
 	}
 	///   NEXT PAGE
-	if ((Touch_inRange(Xval, Yval, M7B_C)) && (MENU == 3 || MENU == 4 || MENU == 5))
+	if ((Touch_inRange(Xval, Yval, M7B_C)) && (MENU_NR == 3 || MENU_NR == 4 || MENU_NR == 5))
 	{
 		Update_btn_press(M7B_C);
 		delay(1);
-		MENU++;
+		MENU_NR++;
 		SCREEN_UPDATE = true;
 		Serial.println("NEXT PAGE  ICON  M7B_C");
 		return;
@@ -696,7 +743,7 @@ void BUTTON_TOUCH_RGB_MENU(int Xval, int Yval) {
 		delay(1);
 		Serial.println("PREV PAGE  ICON  M7B_D");
 
-		MENU--;
+		MENU_NR--;
 		SCREEN_UPDATE = true;
 		return;
 
@@ -720,22 +767,22 @@ void BUTTON_TOUCH_RGB_MENU(int Xval, int Yval) {
 		Update_btn_press(M7B_F);
 		delay(1);
 
-		if (MENU == 3) {
+		if (MENU_NR == 3) {
 			RED1 = Temp_red_1; ///Read stored light Value
 			GREEN1 = Temp_green_1;  ///Read stored light Value
 			BLUE1 = Temp_blue_1; ///Read stored light Value
 		}
-		if (MENU == 4) {
+		if (MENU_NR == 4) {
 			RED2 = Temp_red_1; ///Read stored light Value
 			GREEN2 = Temp_green_1;  ///Read stored light Value
 			BLUE2 = Temp_blue_1; ///Read stored light Value
 		}
-		if (MENU == 3) {
+		if (MENU_NR == 3) {
 			RED3 = Temp_red_1; ///Read stored light Value
 			GREEN3 = Temp_green_1;  ///Read stored light Value
 			BLUE3 = Temp_blue_1; ///Read stored light Value
 		}
-		if (MENU == 3) {
+		if (MENU_NR == 3) {
 			RED4 = Temp_red_1; ///Read stored light Value
 			GREEN4 = Temp_green_1;  ///Read stored light Value
 			BLUE4 = Temp_blue_1; ///Read stored light Value
@@ -882,3 +929,19 @@ void BUTTON_TOUCH_RGB_MENU(int Xval, int Yval) {
 }
 
 
+void RGB_BUTTON_HOME(int Xtemp, int Ytemp) {
+
+	if (Touch_inRange(Xtemp, Ytemp, M7B_B))
+	{
+		Serial.println("MENU SET TO 0 MEANING HOME SCREEN");
+		MENU_NR = 0;            // MENU SET TO 0 MEANING HOME SCREEN;
+		SCREEN_UPDATE = true; // UPDATE SCREEN SINCE HOME BUTTON WAS PRESSED;
+		SUB_SCREEN_UPDATE = false;
+
+		return;
+	}
+	else { // do nothing *
+	}
+
+
+}

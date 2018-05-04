@@ -25,6 +25,7 @@
     <None Include="Touch2.ino" />
     <None Include="FLASH.ino" />
     <None Include="gk.ino" />
+    <None Include="BEST_NEW.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.CHGA_BASE_SD_RA8875_TOUCH_ESP8266_RTC_V12.ino.vsarduino.h">

@@ -31,7 +31,7 @@ void TFT_MAIN_PANEL () {
   tft.setFontScale(0);//font x1
   tft.setCursor(15, 320);
   tft.print("HUMIDITY");
-WRITE_TITLE_DATE_TFT();
+  WRITE_TITLE_DATE_TFT();
   Write_TEMP_HUMI_PH_TFT();
 
 
@@ -100,8 +100,7 @@ void Write_TEMP_HUMI_PH_TFT() {
  tft.print("24.48");
   //tft.setFontScale(6);//LARGE FONT
 // tft.setTextColor(RA8875_WHITE);
-
-
+ 
   tft.setCursor(15, 180);///WATER AVG TEMP
   tft.print("26.49");
 
@@ -397,8 +396,9 @@ void TFT_MENU_ABOUT (boolean reset_screen, int STATUS, int menu_nr) {
   create_label(label_test_2);//Create label for GREEN show value
   create_label(label_test_3);//Create label for BLUE show value
 
-
-
+  update_label_val(label_test_1, label_test_1_Value);
+  update_label_val(label_test_2, label_test_2_Value);
+  update_label_val(label_test_3, label_test_3_Value);
 
 
   create_btn(M8B_A);
@@ -525,7 +525,7 @@ SCREEN_UPDATE = false;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
-
+/*
 void ON_OFF_BUTTON (int XPOS , int YPOS , char* button_name){
   int BUTT_SIZE = 50;
 
@@ -655,3 +655,4 @@ void DRAW_SETTINGS_MENU_BUTTONS_CHGA(boolean reset_screen, int STATUS) {
     SCREEN_UPDATE = false;
   }
 }
+*/

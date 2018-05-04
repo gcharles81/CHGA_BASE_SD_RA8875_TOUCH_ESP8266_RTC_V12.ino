@@ -227,7 +227,7 @@ void RGB_Settings_BTN_Home(int Xtemp, int Ytemp) {
 	if (Touch_inRange(Xtemp, Ytemp, M7B_B))
 	{
 		Serial.println("MENU SET TO 0 MEANING HOME SCREEN");
-		MENU = 0;            // MENU SET TO 0 MEANING HOME SCREEN;
+		MENU_NR = 0;            // MENU SET TO 0 MEANING HOME SCREEN;
 		SCREEN_UPDATE = true; // UPDATE SCREEN SINCE HOME BUTTON WAS PRESSED;
 		SUB_SCREEN_UPDATE = false;
 

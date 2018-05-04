@@ -5,7 +5,9 @@ int KPD_Y_VAL = 0;
 
 int X_M = 61;
 int Y_M = 61;
-String VALUE_Combined = "";
+String Val_Combined_lbl1 = "";
+String Val_Combined_lbl2 = "";
+String Val_Combined_lbl3 = "";
 
 int16_t label_KEYPAD[4] = { 172, 233,113,40 };
 
@@ -173,11 +175,11 @@ void update_label_val_String(int16_t TDF[4], int val) {
 
 		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
 
-		tft.print(VALUE_Combined);
+		tft.print(Val_Combined_lbl1);
 	}
 
 	else {
-		VALUE_Combined.concat(val);
+		Val_Combined_lbl1.concat(val);
 
 		tft.setFontScale(1);//font x1
 
@@ -185,7 +187,7 @@ void update_label_val_String(int16_t TDF[4], int val) {
 
 		tft.setCursor(((TDF[2] / 2) + TDF[0]), ((TDF[3] / 2) + TDF[1]), true);
 
-		tft.print(VALUE_Combined);
+		tft.print(Val_Combined_lbl1);
 	}
 
 
