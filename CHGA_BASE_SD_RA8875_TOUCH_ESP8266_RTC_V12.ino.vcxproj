@@ -119,6 +119,7 @@
     <ClInclude Include="CHGA_Keypad.h" />
     <ClInclude Include="Lable_handler_CHGA.h" />
     <ClInclude Include="RGB_settings_menu.h" />
+    <ClInclude Include="Temporary_timers.h" />
     <ClInclude Include="Test_Menu.h" />
     <ClInclude Include="__vm\.CHGA_BASE_SD_RA8875_TOUCH_ESP8266_RTC_V12.ino.vsarduino.h" />
   </ItemGroup>

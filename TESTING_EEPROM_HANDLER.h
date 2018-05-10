@@ -1,12 +1,12 @@
 
-
+/*
 
 
 typedef struct _info
 {
 	unsigned short address;
 
-}INFO;
+}INFO2;
 
 const INFO EE_INFO[8] =
 {
@@ -30,3 +30,5 @@ typedef enum Charles_EE_Test {
 	EE_VAL_G,
 	EE_VAL_H,
 }PARAMETER_NAME;
+
+*/
