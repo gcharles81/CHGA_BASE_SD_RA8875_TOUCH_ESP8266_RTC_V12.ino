@@ -10,6 +10,8 @@ int TRB_SIZE_Y = 35;
 int Temp_red_1 = 0;
 int Temp_blue_1 = 0;
 int Temp_green_1 = 0;
+
+
 uint16_t lbl_back_color = RA8875_LIGHT_GREY;
 uint16_t lbl_TXT_color = RA8875_BLACK;
 
