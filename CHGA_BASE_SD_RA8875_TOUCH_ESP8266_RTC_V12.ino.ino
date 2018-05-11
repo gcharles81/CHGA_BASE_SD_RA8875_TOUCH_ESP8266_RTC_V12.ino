@@ -3,11 +3,16 @@
 #include "keypad.h"
 #include <SPI.h>
 #include <SD.h>
+#include <TimerHandler.h>
+#include <RGBHandler.h>
+
+
+#include "Timers_definition.h"//not sure if needed
 
 #include <RA8875.h>
 //#include <Wire.h>
 
-#include "Temporary_timers.h"
+#include "Temporary_timers.h" ////only temporary here this actually will be replaced with Timers & RGB channels handlers .h 
 
 #include <FT5206.h>
 
@@ -100,12 +105,10 @@ int KEYPAD_YPOS_VAL = 10;
 
 #include "All_75_Pic_65K.h"
 #include "Buttons_handler_CHGA.h"
-
 #include "RGB_settings_menu.h"
 #include "CHGA_Keypad.h"
 #include "Test_Menu.h"
 #include "TESTING_EEPROM_HANDLER.h"
-
 #include "Lable_handler_CHGA.h"
 
 ////////////ESP8266//////CHGA
@@ -120,21 +123,13 @@ int KEYPAD_YPOS_VAL = 10;
 #define WLAN_GPIO0      51   //
 #define WLAN_GPIO13     WLAN_RTS
 #define WLAN_GPIO15     WLAN_CTS
-
-
-
-
 #define HAVE_ESP12E   1 // 0= not available / 1=available
-
-
 #define BUFFER_SIZE 1024
-
 #define SSID  "Marsaxlokk"      // change this to match your WiFi SSID
 #define PASS  "Liam@3004"  // change this to match your WiFi password
 #define PORT  "123"
 #define NTPSERVER  "192.168.1.4"
 const int timeZone = -4;  // Eastern DST (USA)
-
 #define BUFFER_SIZE 1024
 ///////////////////////////////////////////////////////////////////////////////////
 char buffer[BUFFER_SIZE], query[48];
